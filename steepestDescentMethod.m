@@ -34,9 +34,9 @@ while norm(df) > e
     dgt = diff(g, t);
     tk = solve(dgt(xk(1), xk(2), t));
     % update the x position 
-    xk1 = xk + tk * dk;
+%     xk1 = xk + tk * dk;
     % modify the step to avoid vertical condition 
-%     xk1 = xk + 0.9 * tk * dk;
+    xk1 = xk + 0.9 * tk * dk;
     x_record = [x_record; xk1];
     scatter(xk1(1), xk1(2), 'b');
     plot([xk(1), xk1(1)], [xk(2), xk1(2)], 'r', 'LineWidth', 2);

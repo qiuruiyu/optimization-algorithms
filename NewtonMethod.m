@@ -1,16 +1,16 @@
 clear;clc;cla;
 syms x1 x2 t
 % 2 dimensinal problem 
-f(x1, x2) = (x1-3)^2 + x2 + (x2-x1-1)^2;
+f(x1, x2) = (x1-x2)^2 + (x1-1)^2;
 dfx1 = diff(f, x1);
 dfx2 = diff(f, x2);
 df = [dfx1; dfx2];
 H = [diff(dfx1, x1) diff(dfx1, x2); diff(dfx2, x1), diff(dfx2, x2)];
 
-x = linspace(-3, 3);
-y = linspace(-3, 3);
+x = linspace(-10, 10);
+y = linspace(-10, 10);
 [X1, X2] = meshgrid(x, y);
-Z = (X1-3).^2 + X2 + (X2-X1-1).^2;
+Z = (X1-X2).^2 + (X1-1).^2;
 figure(1);
 contour(X1, X2, Z);
 axis equal;  
@@ -24,7 +24,7 @@ Q = eye(2);
 beta = 1;
 alpha = 10;
 iters = 0;
-x0 = [1, 1];
+x0 = [0, 0];
 x_record = x0;
 scatter(x0(1), x0(2));
 dfk = df(x0(1), x0(2));
