@@ -1,16 +1,22 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 对二次凸函数一步迭代收敛
+% 要求 f(x) 二次可微
+% 需要计算 f(x) 二阶导数的逆矩阵，计算量大
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 clear;clc;cla;
 syms x1 x2 t
 % 2 dimensinal problem 
-f(x1, x2) = (x1-x2)^2 + (x1-1)^2;
+f(x1, x2) = -(2*x1-x2)^2 + (x1-1)^2;
 dfx1 = diff(f, x1);
 dfx2 = diff(f, x2);
 df = [dfx1; dfx2];
-H = [diff(dfx1, x1) diff(dfx1, x2); diff(dfx2, x1), diff(dfx2, x2)];
 
-x = linspace(-10, 10);
-y = linspace(-10, 10);
+H = [diff(dfx1, x1) diff(dfx1, x2); diff(dfx2, x1), diff(dfx2, x2)];
+x = linspace(-4, 4);
+y = linspace(-4, 4);
 [X1, X2] = meshgrid(x, y);
-Z = (X1-X2).^2 + (X1-1).^2;
+Z = -(2*X1-X2).^2 + (X1-1).^2;
 figure(1);
 contour(X1, X2, Z);
 axis equal;  
@@ -34,6 +40,7 @@ while norm(dfk) > e
     if det(H(xk(1), xk(2))) ~= 0
         xk1 = xk - df(xk(1), xk(2))' * inv(H(xk(1), xk(2)));
     else
+        % Levenberg-Marquardt Improvement
         G = H(xk(1), xk(2)) + beta * alpha * Q;
         beta = beta * alpha;
         xk1 = xk - df(xk(1), xk(2))' * inv(G);
