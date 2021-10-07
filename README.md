@@ -5,4 +5,5 @@ CSDN个人文章：
 # Common Optimization Algorithms 
 
 - [ ] Steepest Descent Method 最速梯度下降法
-
+- [ ] Newton Method 牛顿法
+- [ ] CG Method 共轭梯度法 
