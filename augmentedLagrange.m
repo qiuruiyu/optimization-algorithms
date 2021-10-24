@@ -7,10 +7,10 @@ c = 10000;
 % v: lagrange parameter 
 % c: augmented lagrange parameter 
 % min f(x1, x2)
-f(x1, x2) = x1^2 + x2^2; 
+f(x1, x2) = (x1-3)^2*(4-x2); 
 % f(x1, x2) = -20*exp(-0.2*sqrt(0.5*(x1^2+x2^2))) - exp(0.5*cos(2*pi*x1)+0.5*cos(2*pi*x2)) + 20 + exp(1);
 % constraint
-g(x1, x2) = x1 + x2 - 1;
+g(x1, x2) = x1 + x2 + 3;
 % Lagrange Function 
 L(x1, x2) = f(x1, x2) - v * g(x1, x2); 
 % Augmented Lagrange Function 
@@ -20,10 +20,10 @@ H(x1, x2) = [diff(diff(M, x1), x1), diff(diff(M, x1), x2);
                     diff(diff(M, x2), x1), diff(diff(M, x2), x2)];
 
 % visualize 
-x = linspace(-4, 4, 100);
-y = linspace(-4, 4, 100);
+x = linspace(-0, 5, 100);
+y = linspace(-0, 5, 100);
 [X1, X2] = meshgrid(x, y);
-Z = X1.^2 + X2.^2;
+Z = (X1-3).^2.*(4-X2); 
 % Z = -20*exp(-0.2.*sqrt(0.5.*(X1.^2+X2.^2))) - exp(0.5*cos(2*pi*X1)+0.5*cos(2*pi*X2)) + 20 + exp(1);
 % contour(X1, X2, Z);
 surf(X1, X2, Z);
