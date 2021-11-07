@@ -10,3 +10,4 @@ CSDN个人文章：
 - [ ] Outlier Point Method 外点法（外罚函数法）
 - [ ] Interior Point Method 内点法（内罚函数法）
 - [ ] Augmented Lagrange Method 增广拉格朗日法
+- [ ] SQP（Sequential Quadratic Programming）序列二次规划法
